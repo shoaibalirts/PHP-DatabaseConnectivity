@@ -1,0 +1,10 @@
+li {
+    list-style-type: none;
+}
+.container {
+    background-color: skyblue;
+    padding: 1rem;
+    border-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+}

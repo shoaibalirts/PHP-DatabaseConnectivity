@@ -20,37 +20,26 @@
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
     ]);
     // var_dump($pdo);
-    $title = addslashes("The Basics I've Learned");
-    $query = "SELECT * FROM `notes` WHERE `title` = '$title' ";
-    $query = "SELECT * FROM `notes` WHERE `id`=2 OR `id`=6 ";
+    // $title = addslashes("The Basics I've Learned");
+    
+    $query = "SELECT * FROM `notes` WHERE `id`=6 ";
+
     // create a statement to prepare a query
-    $stmt = $pdo->prepare('SELECT * FROM `notes` ');
-    $stmt = $pdo->prepare('SELECT * FROM `notes` ORDER BY `notes`.`title` DESC');
-    $stmt = $pdo->prepare('SELECT `id`, `title`,`content` FROM `notes` ORDER BY `notes`.`id` ASC');
+   
     $stmt = $pdo->prepare($query);
     //execute the statement
     $stmt->execute();
     // fetch all results
     // $note = $stmt->fetch(PDO::FETCH_ASSOC);
-    while (($result = $stmt->fetch(PDO::FETCH_ASSOC)) !== false) {
-        // $results[];
-    }
-    // $results = $stmt->fetch(PDO::FETCH_ASSOC);
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+   $note = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+    
+    
 
-    var_dump($results);
+    var_dump($note);
     ?>
 
-    <ul>
-
-        <?php foreach ($results as $result): ?>
-            <div class="container">
-                <li><?php echo e($result['id']) ?></li>
-                <li><?php echo e($result['title']) ?></li>
-                <li><?php echo e($result['content']) ?></li>
-            </div>
-        <?php endforeach; ?>
-    </ul>
+   
 </body>
 
 </html>
